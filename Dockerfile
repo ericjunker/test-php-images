@@ -2,6 +2,11 @@ FROM openshift/php:5.6
 ENV HOME=/home/jenkins
 
 USER root
+#set up repos
+
+#RUN subscription-manager repos --enable
+RUN yum-config-manager --enable rhel-7-server-rpms
+
 # Install headless Java
 RUN yum-config-manager --disable epel >/dev/null || : && \
     x86_EXTRA_RPMS=$(if [ "$(uname -m)" == "x86_64" ]; then echo -n java-1.8.0-openjdk-headless.i686 ; fi) && \
