@@ -4,8 +4,7 @@ ENV HOME=/home/jenkins
 USER root
 #set up repos
 
-#RUN subscription-manager repos --enable
-RUN yum-config-manager --add-repo rhel-7-server-rpms
+RUN subscription-manager repos --enable rhel-7-server-rpms
 RUN yum-config-manager --enable rhel-7-server-rpms
 # Install headless Java
 RUN yum-config-manager --disable epel >/dev/null || : && \
